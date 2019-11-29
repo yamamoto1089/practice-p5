@@ -15,3 +15,8 @@ function draw() {
   rect(50,50,40,20);//四角形:左から50px,上から50px,横幅40px,縦幅20px
 }
 
+function draw(){
+  console.log(frameCount);
+}
+
+frameRate(30);
