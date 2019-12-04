@@ -32,19 +32,19 @@ var stepX;
 var stepY;
 
 function setup() {
-  createCanvas(800, 400);
+  createCanvas(800, 400);//ディスプレイ領域のサイズ設定(width,height)
   noStroke();
-  colorMode(HSB, width, height, 100);
+  colorMode(HSB, width, height, 100);//色相と彩度を800と400に
 }
 
 function draw() {
-  stepX = mouseX + 2;
+  stepX = mouseX + 2;//stepXにマウスのX座標＋２を代入。＋２することで値が小さすぎて表示に時間がかかることを防ぐ
   stepY = mouseY + 2;
 
-  for (var gridY = 0; gridY < height; gridY += stepY) {
-    for (var gridX = 0; gridX < width; gridX += stepX) {
-      fill(gridX, height - gridY, 100);
-      rect(gridX, gridY, stepX, stepY);
+  for (var gridY = 0; gridY < height; gridY += stepY) {//gridYの初期値０、gridYがheight未満なら、gridYにstepYの値を足す
+    for (var gridX = 0; gridX < width; gridX += stepX) {//gridXの初期値０、gridYがwidth未満なら、gridXにstepXの値を足す
+      fill(gridX, height - gridY, 100);//fill(value,start,end)、(height-gridY)の値から100までをgridXの値にする？
+      rect(gridX, gridY, stepX, stepY);//rect(x四角形の左上のx座標,y四角形の左上のy座標,w四角形の幅,h四角形の高さ)、rect()は四角形を作成するメソッド
     }
   }
 }
