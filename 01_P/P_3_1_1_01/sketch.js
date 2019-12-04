@@ -69,14 +69,14 @@ function draw() {
   var y = 0;
   var fontSize = 20;
 
-  for (var i = 0; i < textTyped.length; i++) {
+  for (var i = 0; i < textTyped.length; i++) {//textTypedには入力文字が代入される
     // get fontsize for the actual letter from the array
-    fontSize = fontSizes[i];
+    fontSize = fontSizes[i];//fontSize配列のi番目の値が入る
     textFont(font, fontSize);
-    var letter = textTyped.charAt(i);
-    var letterWidth = textWidth(letter) + tracking;
+    var letter = textTyped.charAt(i);//textTypedのi番目の文字を取り出してletterに保存
+    var letterWidth = textWidth(letter) + tracking;//textの文字幅をletterの値+trackingの値を加えてletterWidthに代入
 
-    if (x + letterWidth > width) {
+    if (x + letterWidth > width) {//現在の位置と文字幅の合計がディスプレイを超えていたら改行
       // start new line and add line height
       x = 0;
       y += spacing;
