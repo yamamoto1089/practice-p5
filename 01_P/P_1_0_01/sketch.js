@@ -31,20 +31,20 @@
 
 function setup() {
   createCanvas(720, 720);
-  noCursor();
+  // noCursor();//カーソル非表示
 
-  colorMode(HSB, 360, 100, 100);
-  rectMode(CENTER);
-  noStroke();
+  colorMode(HSB, 360, 0, 0);//(カラーモデル,色相0~360,彩度0~100,明度0~100)
+  rectMode(CENTER);//カラーエリアをセンターに持ってくる
+  noStroke();//カラーエリアの境界線をなくす
 }
 
 function draw() {
-  background(mouseY / 2, 100, 100);
+  background(mouseY / 2, 100, 100);//マウスのY座標を2でわって色相環情の0~360の間の値で指定
 
-  fill(360 - mouseY / 2, 100, 100);
-  rect(360, 360, mouseX + 1, mouseX + 1);
+  fill(360 - mouseY / 2, 100, 100);//360-マウスのY座標を２で割った値＝バックグラウンドカラーの反対の色相環
+  rect(360, 360, mouseX + 1, mouseX + 1);//カラーサイズのエリアがマウスのX座標位置に応じて1~720pxに変化
 }
 
 function keyPressed() {
-  if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
+  if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');//sまたはSが押されると画像保存
 }
