@@ -32,24 +32,24 @@
 'use strict';
 
 var font = 'sans-serif';
-var letter = 'A';
+var letter = 'a';
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255);
-  fill(0);
+  background(255);//色指定
+  fill(0);//色指定
 
-  textFont(font);
-  textAlign(CENTER, CENTER);
+  textFont(font);//fontの指定
+  textAlign(CENTER, CENTER);//水平垂直方向の文字揃え
 }
 
 function mouseMoved() {
-  clear();
+  clear();//mouseMoved内の数値をクリアにする
   textSize((mouseX - width / 2) * 5 + 1);
-  text(letter, width / 2, mouseY);
+  text(letter, width / 2, mouseY);//text(文字,X座標の位置,Y座標の位置)
 }
 
-function mouseDragged() {
+function mouseDragged() {//ドラッグしている間以下の挙動。この場合clear()を行っていないので軌跡が残る
   textSize((mouseX - width / 2) * 5 + 1);
   text(letter, width / 2, mouseY);
 }
