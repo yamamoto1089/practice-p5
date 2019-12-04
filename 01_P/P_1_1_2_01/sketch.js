@@ -42,16 +42,17 @@ function draw() {
   colorMode(HSB, 360, width, height);
   background(360, 0, height);
 
-  var angleStep = 360 / segmentCount;
+  var angleStep = 360 / segmentCount;//角度の分割数を決める
 
+  //多角形の描画はbeginShape()で始まり、vertext()で頂点を順番に指定していき、endShape()で終わり
   beginShape(TRIANGLE_FAN);
-  vertex(width / 2, height / 2);
+  vertex(width / 2, height / 2);//一つ目の頂点を中央に
 
-  for (var angle = 0; angle <= 360; angle += angleStep) {
+  for (var angle = 0; angle <= 360; angle += angleStep) {//angle初期値0、angleが360以下の場合、angleにangleStepの値を足す
     var vx = width / 2 + cos(radians(angle)) * radius;
     var vy = height / 2 + sin(radians(angle)) * radius;
-    vertex(vx, vy);
-    fill(angle, mouseX, mouseY);
+    vertex(vx, vy);//頂点の位置
+    fill(angle, mouseX, mouseY);//angleを色相、mouseXを彩度、mouseYを明度
   }
 
   endShape();
@@ -60,7 +61,7 @@ function draw() {
 function keyPressed() {
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
 
-  switch (key) {
+  switch (key) {//switchで最後に押されたキーを確認
   case '1':
     segmentCount = 360;
     break;
