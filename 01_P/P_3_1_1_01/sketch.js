@@ -76,26 +76,34 @@ function draw() {
     var letter = textTyped.charAt(i);//textTypedのi番目の文字を取り出してletterに保存
     var letterWidth = textWidth(letter) + tracking;//textの文字幅をletterの値+trackingの値を加えてletterWidthに代入
 
-    if (x + letterWidth > width) {//現在の位置と文字幅の合計がディスプレイを超えていたら改行
+    if (x + letterWidth > width) {//現在の位置と文字幅の合計がディスプレイを超えていたら改行(xを0,yに行間の値をたす)
       // start new line and add line height
       x = 0;
       y += spacing;
     }
 
     // draw letter
-    text(letter, x, y);
+    text(letter, x, y);//text(文字,x位置,y位置)。文字をこの位置に置く
     // update x-coordinate for next letter
     x += letterWidth;
   }
 
   // blinking cursor after text
-  var timeDelta = millis() - pMillis;
-  newFontSize = map(timeDelta, 0, maxTimeDelta, minFontSize, maxFontSize);
+  var timeDelta = millis() - pMillis;//millis()はミリ秒単位の現在時間。
+  newFontSize = map(timeDelta, 0, maxTimeDelta, minFontSize, maxFontSize);//map(value, start1, stop1, start2, stop2, [withinBounds])。再マッピング
+  //map()補足
+    // value 番号：変換される入力値
+    // start1 番号：値の現在の範囲の下限
+    // stop1 番号：値の現在の範囲の上限
+    // start2 番号：値のターゲット範囲の下限
+    // stop2 番号：値のターゲット範囲の上限
+    // withinBounds ブール値：値を新しくマッピングされた範囲に制限する（オプション。無記載でも良い）
+    //この場合timeDeltaの範囲を0~maxTimeDeltaからminFontSize~maxFontSizeに変換している
   newFontSize = min(newFontSize, maxFontSize);
 
   fill(200, 30, 40);
   if (int(frameCount / 10) % 2 == 0) fill(255);
-  rect(x, y, newFontSize / 2, newFontSize / 20);
+  rect(x, y, newFontSize / 2, newFontSize / 20);//描画位置の矩形
 }
 
 function keyReleased() {
@@ -114,5 +122,5 @@ function keyTyped() {
     }
   }
   // reset timer
-  pMillis = millis();
+  pMillis = millis();//現在時刻をpMillisに保存
 }
